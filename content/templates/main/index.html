@@ -1,17 +1,32 @@
+<html>
+<head>
 {% extends 'layouts/default/page.html' %}
 
 {% load i18n %}
 
+</head>
 {% block content %}
 
     {% if request.user.is_authenticated %}
 
-        {% trans 'Your username is' %} <b>{{ request.user.username }}</b>.
+        <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
+        <body style="background-color: azure">
+        <div class="nav-main" role="navigation">
+        <ul>
+            <li><a href="{# {% url 'home:demo' %} #}">Demo</a></li>
+            <li><a href="{# {% url 'home:tickets' %} #}">Active Tickets</a></li>
+            <li><a href="{# {% url 'home:emails' %} #}">Responded emails</a></li>
+            <li><a href="{# {% url 'home:data' %} #}">Mail Data</a></li>
+            <li><a href="{# {% url 'home: settings' %} #}">Settings</a></li>
+        </ul>
+        </div>
+    	</body>
 
     {% else %}
 
-        {% trans 'You are a guest.' %}
+        {% trans 'Please log in.' %}
 
     {% endif %}
 
 {% endblock %}
+</html>

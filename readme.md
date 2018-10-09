@@ -10,10 +10,10 @@ Use ctrl + c to quit the server.
 
 ### Login and Sign Up:
 
-- Home: Main page, you'd be able to see the application here after logging in.
-- Log In: Enter your user and password to enter the application if the user is signed up in the website.
-- Create an account: Fill the forms to sign up to the application.
-- Change Language: Change interface language.
+- **Home**: Main page, you'd be able to see the application here after logging in.
+- **Log In**: Enter your user and password to enter the application if the user is signed up in the website.
+- **Create an account**: Fill the forms to sign up to the application.
+- **Change Language**: Change interface language.
 	- English.
 	- Russian.
 	- Chinese.

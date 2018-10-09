@@ -1,0 +1,59 @@
+body {
+	margin: 3em 0 0;
+	background-color: #f0f0f0;
+	color: #000;
+}
+
+.nav-main ul {
+	display:table;	/* Make the ul behave like a table */
+	border-collapse:collapse;	/* Collapse touching borders */
+	width:100%;	/* Make it full-width */
+	margin:0 0 20px;	/* Some bottom margin (also resets browser default margin for ul in case there isn’t already a reset for that) */
+	padding:0;	/* Remove any browser default padding */
+	list-style:none;	/* No list bullets, please */
+}
+
+.nav-main li {
+	display:table-cell;	/* Make the li elements behave like table cells */
+	width:1%;	/* By giving them a small width they will magically be stretched to fill the width of the table */
+	border:1px solid #ddd;
+	background:#eee;
+	vertical-align:middle;	/* Vertically center their content */
+	text-align:center;	/* Horizontally center their content */
+}
+
+.nav-main a {
+	display:block;
+	padding:10px;
+	color:#000;
+	text-decoration:none;
+}
+
+.nav-main a:hover,.nav-main a:focus {
+	outline:none;
+	color:#fff;
+	background:#000;
+}
+
+.nav-main.active li:hover {
+	cursor:pointer;
+}
+
+.nav-main.active li:hover,.nav-main.active li.focus {
+	background:#000;
+}
+
+.nav-main.active li:hover a {
+	color:#fff;
+}
+
+/*	Following code added to make all links full height  */
+
+.nav-main li {
+	overflow-y: hidden;
+}
+
+.nav-main a {
+	padding: 2.5em .5em;
+	margin: -2em 0;
+}
