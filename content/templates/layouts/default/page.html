@@ -22,10 +22,14 @@
     <style>
     .nav-main ul {
         list-style-type: none;
-        margin: -15px;
-        margin-top: -15px;
+/*        margin: 0px;
+        margin-top: 5px;
         padding: 0px;
-        width: 10%;
+        width: 11%;*/
+        margin:-15px;
+        margin-top: -15px;
+        padding:0px;
+        width: 12%;
         position: fixed;
         height: 100%;
         overflow: auto;
@@ -47,11 +51,10 @@
         text-decoration:none;
 
     }
-
-                                 
-    .nav-main a.active {
-        background-color: darkgray;
+                      
+    .nav-main a:hover {
         color: white;
+        font-weight: bold;
     }
     </style>
 </head>
@@ -100,6 +103,22 @@
     </div>
 </nav>
 
+<!-- <div class="nav-main" role="navigation">
+    {% bootstrap_messages %}
+    {% block ver-navbar %}
+        {% if request.user.is_authenticated %}
+            <ul>
+                <li><a href="/">Demo</a></li>
+                <li><a href="/tickets">Active Tickets</a></li>
+                <li><a href="/responded-emails">Flow Journey</a></li>
+                <li><a href="/mail-data">Mail Data</a></li>
+                <li><a href="/settings">Settings</a></li>
+            </ul>
+        {% endif %}
+    {% endblock %}
+</div> -->
+
+
 <div class="container-fluid mt-3">
 
     {% bootstrap_messages %}
@@ -108,6 +127,7 @@
         No content.
     {% endblock %}
 </div>
+
 
 <script src="{% static 'vendor/jquery/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
