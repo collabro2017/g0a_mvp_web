@@ -22,7 +22,7 @@ Use ctrl + c to quit the server.
 
 - **Demo**: See the logs of the API in realtime
 - **Active Tickets**: Unique Ids of the Queries that are still active and havent been completed.
-- **Flow Journey **: Scheme of the flow of the API.
+- **Flow Journey**: Scheme of the flow of the API.
 - **Mail Data**: Emails received in real time with their correspondant unique ID.
 - **Settings**: API Configuration.
 
