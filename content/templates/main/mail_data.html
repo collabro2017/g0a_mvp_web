@@ -4,6 +4,7 @@
 
 {% load i18n %}
 
+
 </head>
 {% block content %}
 
@@ -11,7 +12,7 @@
 
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
         <body style="background-color: azure">
-        <div class="nav-main" role="navigation" >
+        <div class="nav-main" role="navigation">
         <ul>
             <li><a href="/">Demo</a></li>
             <li><a href="/tickets">Active Tickets</a></li>
@@ -20,29 +21,30 @@
             <li><a href="/settings">Settings</a></li>
         </ul>
         </div>
-        <div style="padding-left: 150px">
+        <div style="margin-left: 12.5%; overflow: scroll; height: 95%;">
             <h2>Email dataset:</h2>
 <!--             <a>Template 1: </a>
             <a> Hello, Thanks for contacting us. Your ticket ID is: %s. We'll answer your query as soon as posible. Have a great Day. </a>
             <h4 style="padding-top: 15px">Emails:</h4>
             <a style="font-weight: bold;">&ltFrom: </a><a>codetrip.es@gmail.com</a><a style="font-weight: bold;">&gt &ltSubject: </a><a>Need reply</a><a style="font-weight: bold;">&gt<br></a>
             <a>Hello agent, I need you to answer some questions: When and where is the event of the company ? What is the payment method and how much is it ? Thank you for your information. Customer.</a> -->
-            {% for key, value in ticketsIDs.items %}
-                <a>{{ value }}</a>
-            {% endfor %}
             <br/>
-            {% for key, value in dictionary.items %} 
+            {% for key, value in dictionary.items %}
+            <div class="alternative_cls">
                 {% for key2, nested_value in value.items %}
                     {% for key3, finalValue in nested_value.items %}
-                        <a style="font-weight: bold">{{key3}}:</a> <br/>
-                        <a>{{ finalValue }}</a> <br/>
+			{% if key3 != "Message-ID" and key3 != "In-Reply-To" %}
+                        	<a style="font-weight: bold">{{key3}}:</a> <br/>
+                        	<a>{{ finalValue }}</a> <br/>
+			{% endif %}
                     {% endfor %}
                     {% if key2 == "id" %}
+			<a style="font-weight: bold">{{key2}}:</a> <br/>
                         <a>{{ nested_value }}</a><br/>
                     {% endif %}
                 {% endfor %}
                 <br/>
-                <a>------------------------------------------------------------------------------------</a><br/>
+            </div>
             {% endfor %}
         </div>
 
@@ -56,4 +58,5 @@
     {% endif %}
 
 {% endblock %}
+
 </html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+{% extends 'layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% load bootstrap4 %}
+
+</head>
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+
+        <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
+        <body style="background-color: azure">
+        <div class="nav-main" role="navigation">
+        <ul>
+            <li><a href="/">Demo</a></li>
+            <li><a href="/tickets">Active Tickets</a></li>
+            <li><a href="/journey">Flow Journey</a></li>
+            <li><a style="font-weight: bold" href="/mail-data">Mail Data</a></li>
+            <li><a href="/settings">Settings</a></li>
+        </ul>
+        </div>
+        <div style="margin-left: 12.5%">
+            <h2>Email dataset:</h2>
+            <a>Template 1: </a>
+            <a> Hello, Thanks for contacting us. Your ticket ID is: %s. We'll answer your query as soon as posible. Have a great Day. </a>
+            <h4 style="padding-top: 15px">Emails:</h4>
+            <a style="font-weight: bold;">&ltFrom: </a><a>goa.test19@gmail.com</a><a style="font-weight: bold;">&gt &ltSubject: </a><a>Need reply</a><a style="font-weight: bold;">&gt<br></a>
+            <a>Hello agent, I need you to answer some questions: When and where is the event of the company ? What is the payment method and how much is it ? Thank you for your information. Customer.</a>
+        </div>
+
+        </body>
+
+    {% else %}
+
+        {% trans 'Please log in.' %}
+
+    {% endif %}
+
+{% endblock %}
+</html>

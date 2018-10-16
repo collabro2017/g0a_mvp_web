@@ -20,11 +20,13 @@
             <li><a href="/settings">Settings</a></li>
         </ul>
         </div>
-        <div style="margin-left: 12.5%">
+        <div style="margin-left: 12.5%; overflow: scroll; height: 95%;">
             <a>Showing the model's active tickets IDs: Queries that are still active and havent been completed.</a><br/>
             <br/>
             {% for key, value in tickets.items %} 
+            <div class="alternative_cls">
                 <a style="font-weight: bold">ID: </a><a>{{value}}</a><br/><br/>
+            </div>
             {% endfor %}
         </div>
 

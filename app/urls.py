@@ -8,7 +8,7 @@ from main.views import IndexPageView, ChangeLanguageView, ActiveTicketsView, Flo
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', IndexPageView.as_view(), name='index'),
+    path('', IndexPageView, name='index'),
 
     path('tickets/', ActiveTicketsView , name="active_tickets"),
     path('journey/', FlowJourneysView.as_view(), name="flow_journeys"),
