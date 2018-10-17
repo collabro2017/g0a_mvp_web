@@ -32,8 +32,15 @@ def ActiveTicketsView(request):
 
 	return render(request, 'main/active_tickets.html', {'tickets': tickets_r}) 
 
-class FlowJourneysView(TemplateView):
-	template_name = 'main/flow_journeys.html'
+
+def FlowJourneysView(request):
+
+	if(os.path.exists("FlowJourneys.txt")):
+		with open('FlowJourneys.txt','r') as f:
+		    journeys = f.read()
+
+
+	return render(request, 'main/settings.html', {'FlowJourneys': journeys}) 
 
 def MailDataView(request):
 
@@ -57,5 +64,12 @@ def MailDataView(request):
 	return render(request, 'main/mail_data.html', {'dictionary': mailData, 'ticketsIDs': ticketsIDs}) 
 
 
-class SettingsView(TemplateView):
-	template_name = 'main/settings.html'
+
+def SettingsView(request):
+
+	if(os.path.exists("SettingsOptions.txt")):
+		with open('SettingsOptions.txt','r') as f:
+		    options = f.read()
+
+
+	return render(request, 'main/settings.html', {'options': options}) 

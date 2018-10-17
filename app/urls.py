@@ -13,7 +13,7 @@ urlpatterns = [
     path('tickets/', ActiveTicketsView , name="active_tickets"),
     path('journey/', FlowJourneysView.as_view(), name="flow_journeys"),
     path('mail-data/', MailDataView, name="mail_data"),
-    path('settings/', SettingsView.as_view(), name="settings"),
+    path('settings/', SettingsView, name="settings"),
 
 
     path('i18n/', include('django.conf.urls.i18n')),
