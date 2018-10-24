@@ -23,7 +23,9 @@ def IndexPageView(request):
 	return render(request, 'main/index.html', {'logs': logs}) 
 
 class ChangeLanguageView(TemplateView):
+
     template_name = 'main/change_language.html'
+
 
 def ActiveTicketsView(request):
 
@@ -35,12 +37,12 @@ def ActiveTicketsView(request):
 
 def FlowJourneysView(request):
 
-	if(os.path.exists("FlowJourneys.txt")):
-		with open('FlowJourneys.txt','r') as f:
-		    journeys = f.read()
+	template_name = 'main/flow_journeys.html'
+	with open('status.txt', 'r') as f:
+		status = f.read()
+	
+	return render( request, template_name, {'status': status} ) 
 
-
-	return render(request, 'main/settings.html', {'FlowJourneys': journeys}) 
 
 def MailDataView(request):
 
@@ -64,12 +66,25 @@ def MailDataView(request):
 	return render(request, 'main/mail_data.html', {'dictionary': mailData, 'ticketsIDs': ticketsIDs}) 
 
 
+def TemplatesView(request):
 
-def SettingsView(request):
+	templates = {
+		'template1':"""
+			Hello,
 
-	if(os.path.exists("SettingsOptions.txt")):
-		with open('SettingsOptions.txt','r') as f:
-		    options = f.read()
+			Thanks for contacting us.
+			Your ticket ID is: %s. 
 
+			We'll answer your query as soon as posible.
 
-	return render(request, 'main/settings.html', {'options': options}) 
+			Have a great Day,
+			This message was generated automatically by our A.I. agent
+
+		 """,
+		 'template2':"""
+		 	Template 2 text
+		 """
+
+	}
+
+	return render(request, 'main/templates.html',{'templates':templates}) 

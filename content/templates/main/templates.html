@@ -13,19 +13,24 @@
         <body style="background-color: azure">
         <div class="nav-main" role="navigation">
         <ul>
-            <li><a style="font-weight: bold" href="/">Demo</a></li>
+            <li><a href="/">Demo</a></li>
             <li><a href="/tickets">Active Tickets</a></li>
             <li><a href="/journey">Flow Journey</a></li>
             <li><a href="/mail-data">Mail Data</a></li>
-            <li><a href="/templates">Templates</a></li>
+            <li><a style="font-weight: bold" href="/templates">Templates</a></li>
         </ul>
         </div>
-        <div style="margin-left: 12.5%; padding-bottom: 120px; overflow: scroll; height: 95%; ">
-    		<h2>Logs: </h2><br/>
-            <a>{{ logs|safe }}</a>
+        <div style="margin-left: 12.5%">
+            <a>Templates:</a>
+            <ul>
+                <li>Template 1: <br/></li>
+                <a style="padding-left: 10px">{{templates.template1}}</a>
+                <li>Template 2: <br/></li>
+                <a style="padding-left: 10px">Whatever this template does</a>
+            </ul>
         </div>
 
-    	</body>
+        </body>
 
     {% else %}
 
