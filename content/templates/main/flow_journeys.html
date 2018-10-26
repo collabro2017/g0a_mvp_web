@@ -1,22 +1,43 @@
+{% extends 'layouts/default/page.html' %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% load i18n %}
 <html>
 <head>
-{% extends 'layouts/default/page.html' %}
 
-{% load i18n %}
-
-<script src="http://code.jquery.com/jquery-latest.js">
 <script type="text/javascript">
-    var status = new XMLHttpRequest();
-    status.open('GET', '/status.txt');
-    status.onreadystatechange = function() {
-      alert(status.responseText);
+
+    function loadFile(filePath) {
+      var result = null;
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("GET", filePath, false);
+      xmlhttp.send();
+      if (xmlhttp.status==200) {
+        result = xmlhttp.responseText;
+        alert(result)
+      } else{
+        alert(xmlhttp.status)
+      }
+      return result;
     }
-    status.send();
-    str = "My String"
-    document.getElementById("status").innerHTML = str.toString();
 
+    window.onload = function() {
+
+        // var client = new XMLHttpRequest();
+        // client.open('GET', '/status.txt');
+        // client.onreadystatechange = function() {
+        //   alert(client.responseText);
+        // }
+        // client.send();
+
+        alert("HEY !")
+        document.getElementById("status").innerHTML = loadFile("status.txt");
+        // document.getElementById("status").innerHTML = "stats";
+
+
+        // ( "#status" ).load( "status.txt" );
+    };
 </script>
-
 
 
 </head>
@@ -26,6 +47,7 @@
 
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
         <body style="background-color: azure">
+
         <div class="nav-main" role="navigation">
         <ul>
             <li><a href="/">Demo</a></li>
@@ -39,8 +61,21 @@
             <a>Model Journey scheme.</a><br/>
         </div>
         <div style="margin-left: 12.5%; padding-top: 20px">
-            <p id="status" style="font-weight: bold">{{status}}</p>
-            <!-- <p id="status"></p> -->
+            <form method="post">{{ csrf_input }}
+            <p id="status" style="font-weight: bold">{{ status }}</p>
+            {% if status == 'Sleeping period' %}
+            <img src="{% static 'FlowDiagram.png' %}" >
+            <p id="status" style="font-weight: bold">{{ status }}</p>
+            {% else if status == 'Analyzing new Email"' %}
+            <img src="{% static 'FlowDiagram.png' %}" >
+            <p id="status" style="font-weight: bold">{{ status }}</p>
+            {% else if status == 'Storing inbox emails in database' %}
+            <img src="{% static 'FlowDiagram.png' %}" >
+            <p id="status" style="font-weight: bold">{{ status }}</p>
+            {% else if status == 'Checking for new emails' %}
+            <img src="{% static 'FlowDiagram.png' %}" >
+            <p id="status" style="font-weight: bold">{{ status }}</p>
+            {% endif %}
         </div>
 
         </body>

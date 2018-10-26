@@ -19,6 +19,36 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 
+    <script type="text/javascript">
+
+        function loadFile(filePath) {
+          var result = null;
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.open("GET", filePath, false);
+          xmlhttp.send();
+          if (xmlhttp.status==200) {
+            result = xmlhttp.responseText;
+            alert(result)
+          } else{
+            alert(xmlhttp.status)
+          }
+          return result;
+        }
+
+        window.onload = function() {
+
+            var client = new XMLHttpRequest();
+            client.open('GET', '/status.txt');
+            client.onreadystatechange = function() {
+              alert(client.responseText);
+            }
+            client.send();
+
+            document.getElementById("status").innerHTML = loadFile("status.txt");
+
+        };
+    </script>
+
     <style>
     .nav-main ul {
         list-style-type: none;
