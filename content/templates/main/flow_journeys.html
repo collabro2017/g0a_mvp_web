@@ -4,7 +4,6 @@
 {% load i18n %}
 <html>
 <head>
-
 <script type="text/javascript">
 
     function loadFile(filePath) {
@@ -22,22 +21,12 @@
     }
 
     window.onload = function() {
-
-        // var client = new XMLHttpRequest();
-        // client.open('GET', '/status.txt');
-        // client.onreadystatechange = function() {
-        //   alert(client.responseText);
-        // }
-        // client.send();
-
         alert("HEY !")
         document.getElementById("status").innerHTML = loadFile("status.txt");
-        // document.getElementById("status").innerHTML = "stats";
-
-
-        // ( "#status" ).load( "status.txt" );
     };
+
 </script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 
 </head>
@@ -46,7 +35,7 @@
     {% if request.user.is_authenticated %}
 
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
-        <body style="background-color: azure">
+        <body style="background-color: azure" id="flow_diagram" >
 
         <div class="nav-main" role="navigation">
         <ul>
@@ -61,23 +50,41 @@
             <a>Model Journey scheme.</a><br/>
         </div>
         <div style="margin-left: 12.5%; padding-top: 20px">
-            <form method="post">{{ csrf_input }}
-            <p id="status" style="font-weight: bold">{{ status }}</p>
-            {% if status == 'Sleeping period' %}
-            <img src="{% static 'FlowDiagram.png' %}" >
-            <p id="status" style="font-weight: bold">{{ status }}</p>
-            {% else if status == 'Analyzing new Email"' %}
-            <img src="{% static 'FlowDiagram.png' %}" >
-            <p id="status" style="font-weight: bold">{{ status }}</p>
-            {% else if status == 'Storing inbox emails in database' %}
-            <img src="{% static 'FlowDiagram.png' %}" >
-            <p id="status" style="font-weight: bold">{{ status }}</p>
-            {% else if status == 'Checking for new emails' %}
-            <img src="{% static 'FlowDiagram.png' %}" >
-            <p id="status" style="font-weight: bold">{{ status }}</p>
+            <p id="status" style="font-weight: bold">Current status: {{ status }}</p>
+            {% if 'Sleeping period' == status %}
+            <img src="{% static '/images/flow/1.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Storing inbox emails in database' == status %}
+            <img src="{% static '/images/flow/2.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Checking for new emails' == status %}
+            <img src="{% static '/images/flow/3.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Analyzing if Email is Worth Replying' == status %}
+            <img src="{% static '/images/flow/4.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Analyzing email content' == status %}
+            <img src="{% static '/images/flow/5.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Ask for human help' == status %}
+            <img src="{% static '/images/flow/6.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Use email template' == status %}
+            <img src="{% static '/images/flow/7.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Using template 1' == status %}
+            <img src="{% static '/images/flow/8-1.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Using template 2' == status 
+            <img src="{% static '/images/flow/8-2.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Using template 3' == status %}
+            <img src="{% static '/images/flow/8-3.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            {% elif 'Responding email using template' == status %}
+            <img src="{% static '/images/flow/9.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
             {% endif %}
         </div>
+        <script>
 
+        $(document).ready(function() {
+          $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+          var my_refresh = setInterval(function() {
+            $('#flow_diagram').load('/ajax_journey/');
+          }, 3000); // the "1000"
+        });
+
+        </script>
         </body>
 
     {% else %}

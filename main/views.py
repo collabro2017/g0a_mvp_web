@@ -41,7 +41,15 @@ def FlowJourneysView(request):
 	with open('status.txt', 'r') as f:
 		status = f.read()
 	
-	return render( request, template_name, {'status': status} ) 
+	return render( request, template_name, {'status': status} )
+
+def Get_Journey_Image(request):
+	
+	template_name = 'main/ajax_journeys.html'
+	with open('status.txt', 'r') as f:
+		status = f.read()
+	
+	return render( request, template_name, {'status': status} )
 
 
 def MailDataView(request):

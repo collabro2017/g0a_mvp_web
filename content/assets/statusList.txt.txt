@@ -1,0 +1,10 @@
+1. Sleeping Period.
+2. Storing inbox emails in database -> If no emails in database.
+3. Checking for new emails.
+4. Analyzing if Email is Worth Replying -> If new emails in inbox.
+5. Analyzing email content -> If email is worth replying.
+6. Ask for human help -> If email content doent matches templates.
+7. Use email template -> If email content matches templates.
+8. Pick template
+9. Responding email using template
+

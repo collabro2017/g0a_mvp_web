@@ -13,49 +13,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="flow" href="{% static 'FlowDiagram.png' %}">
 
     <title>MVP web</title>
 
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 
-    <script type="text/javascript">
-
-        function loadFile(filePath) {
-          var result = null;
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.open("GET", filePath, false);
-          xmlhttp.send();
-          if (xmlhttp.status==200) {
-            result = xmlhttp.responseText;
-            alert(result)
-          } else{
-            alert(xmlhttp.status)
-          }
-          return result;
-        }
-
-        window.onload = function() {
-
-            var client = new XMLHttpRequest();
-            client.open('GET', '/status.txt');
-            client.onreadystatechange = function() {
-              alert(client.responseText);
-            }
-            client.send();
-
-            document.getElementById("status").innerHTML = loadFile("status.txt");
-
-        };
-    </script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <style>
     .nav-main ul {
         list-style-type: none;
-/*        margin: 0px;
-        margin-top: 5px;
-        padding: 0px;
-        width: 11%;*/
         margin:-15px;
         margin-top: -15px;
         padding:0px;
@@ -90,11 +59,8 @@
     .alternative_cls:nth-child(odd){
         background: aqua;
     }
-
-    /*.alternative_cls:nth-child(even){
-        background: aquamarine;
-    }*/
     </style>
+
 </head>
 
 <body>
