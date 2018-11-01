@@ -91,7 +91,11 @@ def TemplatesView(request):
 		 """,
 		 'template2':"""
 		 	Template 2 text
+		 """,
+		 'template3':"""
+		 	Template 3 text
 		 """
+
 
 	}
 

@@ -11,7 +11,7 @@
 
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
         <body style="background-color: azure">
-        <div class="nav-main" role="navigation">
+        <div class="nav-main" role="navigation"">
         <ul>
             <li><a href="/">Demo</a></li>
             <li><a href="/tickets">Active Tickets</a></li>
@@ -20,14 +20,13 @@
             <li><a style="font-weight: bold" href="/templates">Templates</a></li>
         </ul>
         </div>
-        <div style="margin-left: 12.5%">
-            <a>Templates:</a>
-            <ul>
-                <li>Template 1: <br/></li>
-                <a style="padding-left: 10px">{{templates.template1}}</a>
-                <li>Template 2: <br/></li>
-                <a style="padding-left: 10px">Whatever this template does</a>
-            </ul>
+        <div style="margin-left: 12.5%;">
+            <h2 >Templates:</h2><br/>
+            {% for key, value in templates.items %} 
+            <div class="alternative_cls">
+                <a style="font-weight: bold">{{key}}: </a><a>{{value}}</a><br/><br/>
+            </div>
+            {% endfor %}
         </div>
 
         </body>
