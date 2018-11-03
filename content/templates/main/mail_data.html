@@ -1,7 +1,7 @@
 <html>
 <head>
 {% extends 'layouts/default/page.html' %}
-
+{% load static %}
 {% load i18n %}
 
 
@@ -21,14 +21,12 @@
             <li><a href="/templates">Templates</a></li>
         </ul>
         </div>
-        <div style="margin-left: 12.5%; overflow: scroll; height: 95%;">
-            <h2>Email dataset:</h2>
-<!--             <a>Template 1: </a>
-            <a> Hello, Thanks for contacting us. Your ticket ID is: %s. We'll answer your query as soon as posible. Have a great Day. </a>
-            <h4 style="padding-top: 15px">Emails:</h4>
-            <a style="font-weight: bold;">&ltFrom: </a><a>codetrip.es@gmail.com</a><a style="font-weight: bold;">&gt &ltSubject: </a><a>Need reply</a><a style="font-weight: bold;">&gt<br></a>
-            <a>Hello agent, I need you to answer some questions: When and where is the event of the company ? What is the payment method and how much is it ? Thank you for your information. Customer.</a> -->
-            <br/>
+        <div style="margin-left: 12.5%; overflow: scroll; height: 87%">
+            <h2 style="padding-bottom: 1.5%">
+            Email Dataset:
+            <a href="" onclick="reloadPage(); return false;"><img class="toggle" id="reload" src="{% static 'images/reload.png' %}" style="height: 20px; width: 20px" /> </a>
+             </h2>
+             <br/>
             {% for key, value in dictionary.items %}
             <div class="alternative_cls">
                 {% for key2, nested_value in value.items %}
@@ -48,6 +46,13 @@
             {% endfor %}
         </div>
 
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $( ".toggle" ).click( function() {
+                $("#reload").toggleClass('flip');
+            });
+        });
+        </script>
 
         </body>
 

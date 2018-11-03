@@ -1,8 +1,22 @@
 <html>
-<head>
 {% extends 'layouts/default/page.html' %}
-
+{% load static %}
 {% load i18n %}
+
+<head>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    function reloadPage() {
+      $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+      var my_refresh = function() {
+        $('#flow_diagram').load('/ajax_journey/');
+      },
+    };
+
+</script>
 
 </head>
 {% block content %}
@@ -10,20 +24,33 @@
     {% if request.user.is_authenticated %}
 
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
-        <body style="background-color: azure">
+        <body style="background-color: azure" id="logs">
         <div class="nav-main" role="navigation">
-        <ul>
-            <li><a style="font-weight: bold" href="/">Demo</a></li>
-            <li><a href="/tickets">Active Tickets</a></li>
-            <li><a href="/journey">Flow Journey</a></li>
-            <li><a href="/mail-data">Mail Data</a></li>
-            <li><a href="/templates">Templates</a></li>
-        </ul>
+            <ul>
+                <li><a style="font-weight: bold" href="/">Demo</a></li>
+                <li><a href="/tickets">Active Tickets</a></li>
+                <li><a href="/journey">Flow Journey</a></li>
+                <li><a href="/mail-data">Mail Data</a></li>
+                <li><a href="/templates">Templates</a></li>
+            </ul>
         </div>
-        <div style="margin-left: 12.5%; padding-bottom: 120px; overflow: scroll; height: 95%; ">
-    		<h2>Logs: </h2><br/>
+        <div style="margin-left: 12.5%; overflow: scroll; height: 87%">
+    		<h2 style="padding-bottom: 1.5%">
+            Logs:
+            <a href="" onclick="reloadPage(); return false;"><img class="toggle" id="reload" src="{% static 'images/reload.png' %}" style="height: 20px; width: 20px" /> </a>
+             </h2>
             <a>{{ logs|safe }}</a>
         </div>
+
+        <script>
+
+        $(document).ready(function() {
+            $( ".toggle" ).click( function() {
+                $("#reload").toggleClass('flip');
+            });
+        });    
+
+        </script>
 
     	</body>
 

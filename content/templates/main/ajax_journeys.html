@@ -26,10 +26,10 @@
         <div style="margin-left: 12.5%">
             <h2>Model Journey scheme.</h2>
         </div>
-        <div style="margin-left: 12.5%; padding-top: 20px">
+        <div style="margin-left: 12.5%;">
             <p id="status" style="font-weight: bold">Current status: {{ status }}</p>
             {% if 'Sleeping period' == status %}
-            <img src="{% static '/images/flow/1.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/1.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Storing inbox emails in database' == status %}
             <img src="{% static '/images/flow/2.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
             {% elif 'Checking for new emails' == status %}

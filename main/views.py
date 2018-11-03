@@ -22,6 +22,17 @@ def IndexPageView(request):
 
 	return render(request, 'main/index.html', {'logs': logs}) 
 
+def Get_Ajax_Logs(request):
+	if(os.path.exists("logs.txt")):
+		with open('logs.txt','r') as f:
+		    logs = f.read()
+
+		logs = logs.replace("\n","<br />")
+	else:
+		logs = ""
+
+	return render(request, 'main/ajax_index.html', {'logs': logs}) 	
+
 class ChangeLanguageView(TemplateView):
 
     template_name = 'main/change_language.html'

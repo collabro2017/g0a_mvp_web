@@ -30,7 +30,8 @@
         padding:0px;
         width: 12%;
         position: absolute;
-        height: 100%;
+        height: auto !important;
+        min-height: 95%;
         overflow: auto;
         background-color:rgb(52,58,64);
     }
@@ -58,6 +59,18 @@
 
     .alternative_cls:nth-child(odd){
         background: aqua;
+    }
+
+    #reload {
+      -moz-transition: transform 0.5s;
+      -webkit-transition: transform 0.5s;
+      transition: transform 0.5s;
+    }
+
+    .flip {
+      transform: rotate(180deg);
+      width:25px;
+      height:22px;
     }
     </style>
 

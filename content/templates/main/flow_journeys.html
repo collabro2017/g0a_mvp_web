@@ -4,30 +4,8 @@
 {% load i18n %}
 <html>
 <head>
-<script type="text/javascript">
 
-    function loadFile(filePath) {
-      var result = null;
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("GET", filePath, false);
-      xmlhttp.send();
-      if (xmlhttp.status==200) {
-        result = xmlhttp.responseText;
-        alert(result)
-      } else{
-        alert(xmlhttp.status)
-      }
-      return result;
-    }
-
-    window.onload = function() {
-        alert("HEY !")
-        document.getElementById("status").innerHTML = loadFile("status.txt");
-    };
-
-</script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
 
 </head>
 {% block content %}
@@ -49,10 +27,10 @@
         <div style="margin-left: 12.5%">
             <h2>Model Journey scheme.</h2>
         </div>
-        <div style="margin-left: 12.5%; padding-top: 20px">
+        <div style="margin-left: 12.5%;">
             <p id="status" style="font-weight: bold">Current status: {{ status }}</p>
             {% if 'Sleeping period' == status %}
-            <img src="{% static '/images/flow/1.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/1.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Storing inbox emails in database' == status %}
             <img src="{% static '/images/flow/2.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
             {% elif 'Checking for new emails' == status %}
@@ -81,7 +59,7 @@
           $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
           var my_refresh = setInterval(function() {
             $('#flow_diagram').load('/ajax_journey/');
-          }, 3000); // the "1000"
+          }, 3000); // Waiting three seconds between calls.
         });
 
         </script>
