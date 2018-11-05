@@ -10,8 +10,8 @@
     {% if request.user.is_authenticated %}
 
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
-        <body style="background-color: azure">
-        <div class="nav-main" role="navigation">
+        <body style="background-color: azure" id="logs">
+        <div class="nav-main" role="navigation" style="margin-top: 2.4%">
             <ul>
                 <li><a style="font-weight: bold" href="/">Demo</a></li>
                 <li><a href="/tickets">Active Tickets</a></li>
@@ -20,8 +20,11 @@
                 <li><a href="/templates">Templates</a></li>
             </ul>
         </div>
-        <div style="margin-left: 12.5%; overflow: scroll; height: 87%">
-    		<h2>Logs: </h2><br/>
+        <div style="margin-left: 12.5%; overflow: scroll; height: 87%; margin-top: -1%">
+            <h3 style="margin-top: -1%">
+            Logs
+            <a href="" onclick="reloadPage(); return false;"><img class="toggle" id="reload" src="{% static 'images/reload.png' %}" style="height: 20px; width: 20px" /> </a>
+             </h3>
             <a>{{ logs|safe }}</a>
         </div>
 

@@ -1,7 +1,7 @@
 <html>
 <head>
 {% extends 'layouts/default/page.html' %}
-
+{% load static %}
 {% load i18n %}
 
 </head>
@@ -11,18 +11,21 @@
 
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
         <body style="background-color: azure">
-        <div class="nav-main" role="navigation">
-        <ul>
-            <li><a href="/">Demo</a></li>
-            <li><a style="font-weight: bold" href="/tickets">Active Tickets</a></li>
-            <li><a href="/journey">Flow Journey</a></li>
-            <li><a href="/mail-data">Mail Data</a></li>
-            <li><a href="/templates">Templates</a></li>
-        </ul>
+        <div class="nav-main" role="navigation" style="margin-top: 2.4%">
+            <ul>
+                <li><a href="/">Demo</a></li>
+                <li><a style="font-weight: bold" href="/tickets">Active Tickets</a></li>
+                <li><a href="/journey">Flow Journey</a></li>
+                <li><a href="/mail-data">Mail Data</a></li>
+                <li><a href="/templates">Templates</a></li>
+            </ul>
         </div>
-        <div style="margin-left: 12.5%; overflow: scroll; height: 87%">
-            <h2>Active Tickets: </h2>
-            <a>Showing the model's active tickets IDs: Queries that are still active and havent been completed.</a><br/>
+        <div style="margin-left: 12.5%; overflow: scroll; height: 87%; margin-top: -1%">
+            <h3 style="margin-top: -1%"> 
+            Active Tickets:
+            <a href="" onclick="reloadPage(); return false;"><img class="toggle" id="reload" src="{% static 'images/reload.png' %}" style="height: 20px; width: 20px" /> </a>
+             </h3>
+            <blockquote style="margin-bottom: -2.5%">Showing the model's active tickets IDs: Queries that are still active and havent been completed.</blockquote><br/>
             <br/>
             {% for key, value in tickets.items %} 
             <div class="alternative_cls">
@@ -31,6 +34,13 @@
             {% endfor %}
         </div>
 
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $( ".toggle" ).click( function() {
+                $("#reload").toggleClass('flip');
+            });
+        });
+        </script>
 
         </body>
 

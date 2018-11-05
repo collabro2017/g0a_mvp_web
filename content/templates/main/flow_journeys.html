@@ -5,9 +5,13 @@
 <html>
 <head>
 
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 </head>
+
 {% block content %}
 
     {% if request.user.is_authenticated %}
@@ -16,19 +20,19 @@
         <body style="background-color: azure" id="flow_diagram" >
 
         <div class="nav-main" role="navigation">
-        <ul>
-            <li><a href="/">Demo</a></li>
-            <li><a href="/tickets">Active Tickets</a></li>
-            <li><a style="font-weight: bold" href="/journey">Flow Journey</a></li>
-            <li><a href="/mail-data">Mail Data</a></li>
-            <li><a href="/templates">Templates</a></li>
-        </ul>
+            <ul>
+                <li><a href="/">Demo</a></li>
+                <li><a href="/tickets">Active Tickets</a></li>
+                <li><a style="font-weight: bold" href="/journey">Flow Journey</a></li>
+                <li><a href="/mail-data">Mail Data</a></li>
+                <li><a href="/templates">Templates</a></li>
+            </ul>
         </div>
-        <div style="margin-left: 12.5%">
-            <h2>Model Journey scheme.</h2>
+        <div style="margin-left: 12.5%; margin-top: -1%">
+            <h3>Model Journey scheme.</h3>
         </div>
         <div style="margin-left: 12.5%;">
-            <p id="status" style="font-weight: bold">Current status: {{ status }}</p>
+            <blockquote id="status" style="font-weight: bold">Current status: {{ status }}</blockquote>
             {% if 'Sleeping period' == status %}
             <img src="{% static '/images/flow/1.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Storing inbox emails in database' == status %}
@@ -54,15 +58,15 @@
             {% endif %}
         </div>
         <script>
-
-        $(document).ready(function() {
-          $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
-          var my_refresh = setInterval(function() {
-            $('#flow_diagram').load('/ajax_journey/');
-          }, 3000); // Waiting three seconds between calls.
-        });
-
+            $(document).ready(function() {
+              $.ajaxSetup({ cache: false }); // This part addresses an IE bug.  without it, IE will only load the first number and will never refresh
+              var my_refresh = setInterval(function() {
+                $('#flow_diagram').load('/ajax_journey/');
+              }, 3000); // Waiting three seconds between calls.
+              $('.materialboxed').materialbox();
+            });
         </script>
+
         </body>
     {% else %}
 
