@@ -21,11 +21,11 @@
             </ul>
         </div>
         <div style="margin-left: 12.5%; overflow: scroll; height: 87%; margin-top: -1%">
-            <h3 style="margin-top: -1%"> 
+            <h3 style="margin-top: -0.5%"> 
             Active Tickets:
             <a href="" onclick="reloadPage(); return false;"><img class="toggle" id="reload" src="{% static 'images/reload.png' %}" style="height: 20px; width: 20px" /> </a>
              </h3>
-            <blockquote style="margin-bottom: -2.5%">Showing the model's active tickets IDs: Queries that are still active and havent been completed.</blockquote><br/>
+            <blockquote style="margin-bottom: -2%">Showing the model's active tickets IDs: Queries that are still active and havent been completed.</blockquote><br/>
             <br/>
             {% for key, value in tickets.items %} 
             <div class="alternative_cls">

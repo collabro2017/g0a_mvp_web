@@ -19,7 +19,7 @@
         <!-- {% trans 'Your username is' %} <b>{{ request.user.username }}</b>. -->
         <body style="background-color: azure" id="flow_diagram" >
 
-        <div class="nav-main" role="navigation">
+        <div class="nav-main" role="navigation" style="margin-top: 2.4%">
             <ul>
                 <li><a href="/">Demo</a></li>
                 <li><a href="/tickets">Active Tickets</a></li>
@@ -36,25 +36,25 @@
             {% if 'Sleeping period' == status %}
             <img src="{% static '/images/flow/1.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Storing inbox emails in database' == status %}
-            <img src="{% static '/images/flow/2.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/2.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Checking for new emails' == status %}
-            <img src="{% static '/images/flow/3.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/3.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Analyzing if Email is Worth Replying' == status %}
-            <img src="{% static '/images/flow/4.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/4.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Analyzing email content' == status %}
-            <img src="{% static '/images/flow/5.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/5.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Ask for human help' == status %}
-            <img src="{% static '/images/flow/6.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/6.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Use email template' == status %}
-            <img src="{% static '/images/flow/7.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/7.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Using template 1' == status %}
-            <img src="{% static '/images/flow/8-1.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/8-1.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Using template 2' == status 
-            <img src="{% static '/images/flow/8-2.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/8-2.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Using template 3' == status %}
-            <img src="{% static '/images/flow/8-3.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/8-3.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% elif 'Responding email using template' == status %}
-            <img src="{% static '/images/flow/9.png' %}" style="width:1000px;height:500px;border:0;padding-top: 20px">
+            <img src="{% static '/images/flow/9.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
             {% endif %}
         </div>
         <script>
