@@ -54,6 +54,12 @@ def FlowJourneysView(request):
 	
 	return render( request, template_name, {'status': status} )
 
+def ClusterView(request):
+
+	template_name = 'main/cluster.html'
+	
+	return render( request, template_name )
+
 def Get_Journey_Image(request):
 	
 	template_name = 'main/ajax_journeys.html'
