@@ -23,23 +23,25 @@
             <ul>
                 <li><a href="/">Logs</a></li>
                 <li><a href="/tickets">Active Tickets</a></li>
-                <li><a style="font-weight: bold" href="/journey">Flow Journey</a></li>
+                <li><a href="/journey">Flow Journey</a></li>
                 <li><a href="/mail-data">Mail Data</a></li>
                 <li><a href="/templates">Templates</a></li>
-                <li><a href="/cluster">Cluster plot</a></li>
+                <li><a style="font-weight: bold" href="/cluster">Cluster plot</a></li>
             </ul>
         </div>
-        <div style="margin-left: 12.5%; margin-top: -1%">
+
+        <div style="margin-left: 12.5%; margin-top: -1%;">
             <h3>Clustering plot: </h3>
+            <img class="materialboxed" data-caption="Cluster plot" src="{% static '/images/plot.png' %}" style="width:75%; height: 78%; border:0;padding-top: 0.5%; display: block; position: absolute; padding-left: 10%; overflow: scroll"><br/>
         </div>
-        <div style="margin-left: 12.5%;">
-            <img class="materialboxed" src="{% static '/images/plot.png' %}" style="width:80%;height: 73%;border:0;padding-top: 0.5%;display: block; position: absolute;"><br/>
-        </div>
+
         <script type="text/javascript">
-            $(document).ready(function(){
-              $('.materialboxed').materialbox();
-            });
+        	document.addEventListener('DOMContentLoaded', function() {
+        	  var elems = document.querySelectorAll('.materialboxed');
+        	  var instances = M.Materialbox.init(elems, options);
+        	});
         </script>
+
         </body>
     {% else %}
 
@@ -48,4 +50,5 @@
     {% endif %}
 
 {% endblock %}
+
 </html>
