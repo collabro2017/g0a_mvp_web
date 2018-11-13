@@ -32,7 +32,10 @@
 
         <div style="margin-left: 12.5%; margin-top: -1%;">
             <h3>Clustering plot: </h3>
-            <img class="materialboxed" data-caption="Cluster plot" src="{% static '/images/plot.png' %}" style="width:75%; height: 78%; border:0;padding-top: 0.5%; display: block; position: absolute; padding-left: 10%; overflow: scroll"><br/>
+            <a href="" onclick="reloadPage(); return false;"><img class="toggle" id="reload" src="{% static 'images/reload.png' %}" style="height: 20px; width: 20px" />  Reload Cluster plot</a>
+            <a href="{% static '/images/plot.png' %}" target="_blank" > <img data-caption="Cluster plot" src="{% static '/images/plot.png' %}" style="width:70%; height: 78%; border:0;padding-top: 0.5%; padding-bottom: 1% ; display: block; position: absolute; padding-left: 20%; overflow: scroll">
+            </a>
+            <br/>
         </div>
 
         <script type="text/javascript">
@@ -40,6 +43,14 @@
         	  var elems = document.querySelectorAll('.materialboxed');
         	  var instances = M.Materialbox.init(elems, options);
         	});
+        </script>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $( ".toggle" ).click( function() {
+                $("#reload").toggleClass('flip');
+            });
+        });
         </script>
 
         </body>
