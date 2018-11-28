@@ -2,16 +2,27 @@ from django.views.generic import TemplateView
 from django.template import Template, Context
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from app.models import EmailDatabase
 
 import pickle
 import os
 
-# class IndexPageView(TemplateView):
-#     template_name = 'main/index.html'
+def getEmailData():
+
+	email_data = EmailDatabase.objects.all()
+	email_data_list = []
+	emails = {}
+	for i in range(0, len(email_data)):
+		emails['email'] = email_data[i].email
+		emails['password'] = email_data[i].password
+		email_data_list.append(emails)
+
+	return email_data_list
 
 def IndexPageView(request):
 
+	print(__file__)
+	print(getEmailData())
 	if(os.path.exists("logs.txt")):
 		with open('logs.txt','r') as f:
 		    logs = f.read()
@@ -57,6 +68,8 @@ def FlowJourneysView(request):
 def ClusterView(request):
 
 	template_name = 'main/cluster.html'
+
+	os.system('python py_scripts/RunClustering.py')
 	
 	return render( request, template_name )
 
@@ -112,8 +125,6 @@ def TemplatesView(request):
 		 'template3':"""
 		 	Template 3 text
 		 """
-
-
 	}
 
 	return render(request, 'main/templates.html',{'templates':templates}) 
